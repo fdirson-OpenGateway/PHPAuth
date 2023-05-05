@@ -564,13 +564,13 @@ class Auth implements AuthInterface
         ];
         $query_prepared->execute($query_params);
         
-        $uid = $query_prepared->fetch(PDO::FETCH_ASSOC)['uid'];
+        $uid = $query_prepared->fetch(PDO::FETCH_ASSOC);
         
         if (!$uid) {
             return 0;
         }
 
-        return (int)$uid;
+        return (int)$uid['uid'];
     }
 
     public function isEmailTaken(string $email):bool
